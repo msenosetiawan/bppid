@@ -93,8 +93,10 @@
 	<plugin name="cordova-plugin-dialogs" />
 	<plugin name="cordova-plugin-geolocation" />
 	<plugin name="cordova-plugin-x-socialsharing" />
+	<plugin name="cordova-disable-http-cache" />
 	<plugin name="cordova-plugin-inappbrowser" />
 	<plugin name="cordova-plugin-network-information" />
+	<plugin name="onesignal-cordova-plugin" />
 	<platform name="android">
 		<plugin name="cordova-plugin-velda-devicefeedback" />
 	</platform>

@@ -89,7 +89,10 @@
 	<plugin name="cordova-plugin-statusbar" />
 	<plugin name="ionic-plugin-keyboard" />
 	<!-- ./default -->
+	<plugin name="cordova-clipboard" />
 	<plugin name="cordova-plugin-dialogs" />
+	<plugin name="cordova-plugin-geolocation" />
+	<plugin name="cordova-plugin-x-socialsharing" />
 	<plugin name="cordova-plugin-inappbrowser" />
 	<plugin name="cordova-plugin-network-information" />
 	<platform name="android">

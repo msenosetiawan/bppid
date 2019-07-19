@@ -472,7 +472,66 @@ angular.module("barisan_pencinta_pancasila.services", [])
 })
 
 
+// TODO: --|-------- cordova-clipboard
+/** required: cordova-clipboard **/
+.directive("clipboardCopy", function($compile, $ionicModal, $ionicPlatform,$ionicLoading,$timeout) {
+	return {
+		link: function link($scope, $element, $attrs) {
+			$element.bind("click", clipboardCopy);
+			function clipboardCopy(){
+				$ionicLoading.show();
+				var Text = $attrs.text || "" ;
+				if (window.cordova && window.cordova.plugins.clipboard) {
+					cordova.plugins.clipboard.copy(Text);
+				}else{
+					alert("Only work in real device!");
+				}
+				$timeout(function(){
+					$ionicLoading.hide();
+				},500)
+			}
+		}
+	};
+})
 
+// TODO: --|-------- cordova-plugin-geolocation
+/** required: cordova-plugin-geolocation **/
+.directive("geoLocation", function($compile, $ionicModal, $ionicPlatform) {
+	return {
+		scope: {
+			geoText: "="
+		},
+		link: function link($scope, $element, $attrs) {
+			$element.bind("click", getLocation);
+			function getLocation() {
+				$scope.$apply(function() {
+					$scope.geoText = "wait...";
+				});
+				try {
+					navigator.geolocation.getCurrentPosition(function(position) {
+					var lat = position.coords.latitude;
+					var lng = position.coords.longitude;
+					$scope.$apply(function() {
+						$scope.geoText = lat + "," + lng;
+					});
+				},function(error) {
+					$scope.$apply(function() {
+						$scope.geoText = error.message;
+					});
+				},{
+					maximumAge: 3600000,
+					timeout: 60000,
+					enableHighAccuracy: false,
+				});
+				} catch (err) {
+					$scope.$apply(function() {
+						$scope.geoText = err.message;
+					});
+				}
+			}
+		}
+	};
+})
 
 				
 

@@ -7,6 +7,19 @@ angular.module("barisan_pencinta_pancasila.controllers", [])
 	
 	$rootScope.headerExists = true;
 
+	// TODO: indexCtrl --|-- $rootScope.socialShare
+	// required:  cordova-plugin-x-socialsharing
+	$rootScope.socialShare = function(message, subject, fileOrFileArray, url, successCallback, errorCallback){
+			if (window.cordova && window.plugins.socialsharing){
+				window.plugins.socialsharing.share(message, subject, fileOrFileArray, url, successCallback, errorCallback);
+			}else{
+				var socialSharePopup = $ionicPopup.alert({
+					title: "Social Sharing",
+					template: "Only work in real device!",
+				});
+			}
+	};
+
 	// TODO: indexCtrl --|-- $rootScope.exitApp
 	$rootScope.exitApp = function(){
 		var confirmPopup = $ionicPopup.confirm({
@@ -172,9 +185,9 @@ angular.module("barisan_pencinta_pancasila.controllers", [])
 					for(var e = 0; e < keys.length ; e++) {
 						localforage.setItem(keys[e],[]);
 					}
-					$state.go("barisan_pencinta_pancasila.user_login");
+					$state.go("barisan_pencinta_pancasila.dashboard");
 				}).catch(function(err) {
-					$state.go("barisan_pencinta_pancasila.user_login");
+					$state.go("barisan_pencinta_pancasila.dashboard");
 				});
 			}
 			$rootScope.closeMenuPopover();
@@ -626,7 +639,7 @@ $ionicConfig.backButton.text("");
 			scope: $scope,
 			buttons: [
 				{text:"Cancel",onTap: function(e){
-					$state.go("barisan_pencinta_pancasila.user_login");
+					$state.go("barisan_pencinta_pancasila.dashboard");
 				}},
 				{text:"<strong>Save</strong>",type:"button-positive",onTap:function(e){
 						return $scope.form;
@@ -1243,7 +1256,7 @@ $ionicConfig.backButton.text("");
 			scope: $scope,
 			buttons: [
 				{text:"Cancel",onTap: function(e){
-					$state.go("barisan_pencinta_pancasila.user_login");
+					$state.go("barisan_pencinta_pancasila.dashboard");
 				}},
 				{text:"<strong>Save</strong>",type:"button-positive",onTap:function(e){
 						return $scope.form;
@@ -1517,7 +1530,7 @@ $ionicConfig.backButton.text("");
 			scope: $scope,
 			buttons: [
 				{text:"Cancel",onTap: function(e){
-					$state.go("barisan_pencinta_pancasila.user_login");
+					$state.go("barisan_pencinta_pancasila.dashboard");
 				}},
 				{text:"<strong>Save</strong>",type:"button-positive",onTap:function(e){
 						return $scope.form;
@@ -2014,8 +2027,6 @@ $ionicConfig.backButton.text("");
 	function controller_by_user(){
 		try {
 			
-
-
 /** auth login **/
 $scope.login_data = {username:"",password:""};
 $scope.submitLogin = function(){
@@ -2404,7 +2415,7 @@ $scope.logOut = function(){
 			scope: $scope,
 			buttons: [
 				{text:"Cancel",onTap: function(e){
-					$state.go("barisan_pencinta_pancasila.user_login");
+					$state.go("barisan_pencinta_pancasila.dashboard");
 				}},
 				{text:"<strong>Save</strong>",type:"button-positive",onTap:function(e){
 						return $scope.form;

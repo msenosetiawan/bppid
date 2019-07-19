@@ -20,7 +20,10 @@
 		<ion-content class="has-expanded-header light-bg positive-900">
 			<ion-list class="list" >
 				<ion-item ng-hide="hide_menu_dashboard" class="item item-divider text-left" >
-					 {{ "Beranda" | translate }}
+					 {{ "Utama" | translate }}
+				</ion-item>
+				<ion-item ng-hide="hide_menu_home"  sound-touch="true"  class="menu-home item-sidebar item item-icon-left text-left dark-ink" nav-clear="" menu-close=""  ui-sref="barisan_pencinta_pancasila.dashboard" >
+					<i class="icon ion-android-home"></i> {{ "Beranda" | translate }}
 				</ion-item>
 				<ion-item ng-hide="hide_menu_categories"  sound-touch="true"  class="menu-categories item-sidebar item item-icon-left text-left dark-ink" nav-clear="" menu-close="" ui-sref="barisan_pencinta_pancasila.categories">
 					<i class="icon ion-social-buffer"></i> {{ "Kategori" | translate }}

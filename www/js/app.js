@@ -66,6 +66,22 @@ angular.module("barisan_pencinta_pancasila", ["ngCordova","ionic","ionMdInput","
 				}
 			}, 5000);
 
+			//required: cordova plugin add onesignal-cordova-plugin --save
+			if(window.plugins && window.plugins.OneSignal){
+				window.plugins.OneSignal.enableNotificationsWhenActive(true);
+				var notificationOpenedCallback = function(jsonData){
+					try {
+						$timeout(function(){
+							$window.location = "#/barisan_pencinta_pancasila/" + jsonData.notification.payload.additionalData.page ;
+						},200);
+					} catch(e){
+						console.log("onesignal:" + e);
+					}
+				}
+				window.plugins.OneSignal.startInit("baa347da-d59c-4512-9db9-65efcf1d8a73").handleNotificationOpened(notificationOpenedCallback).endInit();
+			}
+
+
 		});
 		$ionicPlatform.registerBackButtonAction(function (e){
 			if($ionicHistory.backView()){
@@ -201,7 +217,7 @@ angular.module("barisan_pencinta_pancasila", ["ngCordova","ionic","ionMdInput","
 
 
 .config(["$translateProvider", function ($translateProvider){
-	$translateProvider.preferredLanguage("en-us");
+	$translateProvider.preferredLanguage("id");
 	$translateProvider.useStaticFilesLoader({
 		prefix: "translations/",
 		suffix: ".json"
@@ -212,7 +228,7 @@ angular.module("barisan_pencinta_pancasila", ["ngCordova","ionic","ionMdInput","
 
 .config(function(tmhDynamicLocaleProvider){
 	tmhDynamicLocaleProvider.localeLocationPattern("lib/ionic/js/i18n/angular-locale_{{locale}}.js");
-	tmhDynamicLocaleProvider.defaultLocale("en-us");
+	tmhDynamicLocaleProvider.defaultLocale("id");
 })
 
 

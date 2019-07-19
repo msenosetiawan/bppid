@@ -43,7 +43,7 @@ angular.module("barisan_pencinta_pancasila.controllers", [])
 				$rootScope.language_option = langKey;
 				localforage.setItem("language_option",langKey);
 			}catch(e){
-				localforage.setItem("language_option","en-us");
+				localforage.setItem("language_option","id");
 			}
 		}
 	};
@@ -57,6 +57,7 @@ angular.module("barisan_pencinta_pancasila.controllers", [])
 	modal_language += "<ion-content class=\"padding\">";
 	modal_language += "<div class=\"list\">";
 	modal_language += "<ion-radio icon=\"icon ion-android-radio-button-on\" ng-model=\"language_option\" ng-value=\"'en-us'\" ng-click=\"tryChangeLanguage('en-us')\">English - US</ion-radio>";
+	modal_language += "<ion-radio icon=\"icon ion-android-radio-button-on\" ng-model=\"language_option\" ng-value=\"'id'\" ng-click=\"tryChangeLanguage('id')\">Indonesian</ion-radio>";
 	modal_language += "<button class=\"button button-full button-dark\" ng-click=\"closeLanguageDialog()\">{{ 'Close' | translate }}</button>";
 	modal_language += "</div>";
 	modal_language += "</ion-content>";
@@ -74,7 +75,7 @@ angular.module("barisan_pencinta_pancasila.controllers", [])
 		}).then(function(value){
 			$rootScope.language_option = value;
 		}).catch(function (err){
-			$rootScope.language_option = "en-us";
+			$rootScope.language_option = "id";
 		})
 	};
 	
@@ -89,18 +90,18 @@ angular.module("barisan_pencinta_pancasila.controllers", [])
 	
 	localforage.getItem("language_option", function(err, value){
 		if(value === null){
-			localforage.setItem("language_option","en-us");
+			localforage.setItem("language_option","id");
 		}else{
 			$rootScope.changeLanguage(value);
 		}
 	}).then(function(value){
 		if(value === null){
-			localforage.setItem("language_option","en-us");
+			localforage.setItem("language_option","id");
 		}else{
 			$rootScope.changeLanguage(value);
 		}
 	}).catch(function (err){
-		localforage.setItem("language_option","en-us");
+		localforage.setItem("language_option","id");
 	})
 	// TODO: indexCtrl --|-- $rootScope.changeFontSize
 	$rootScope.changeFontSize = function(fontSize){
@@ -172,6 +173,96 @@ angular.module("barisan_pencinta_pancasila.controllers", [])
 	$rootScope.tryChangeFontSize = function(val){
 		$rootScope.changeFontSize(val);
 	};
+	
+	// TODO: indexCtrl --|-- $rootScope.modal_notification
+	var modal_notification = "";
+	$rootScope.disable_notification_option = false;
+	modal_notification += "<ion-modal-view>";
+	modal_notification += "<ion-header-bar class=\"bar bar-header bar-dark\">";
+	modal_notification += "<h1 class=\"title\">{{ 'Notifications' | translate }}</h1>";
+	modal_notification += "</ion-header-bar>";
+	modal_notification += "<ion-content class=\"\">";
+	modal_notification += "<div class=\"list\">";
+	modal_notification += "<ion-toggle ng-model=\"disable_notification_option\"  ng-click=\"tryChangeNotification(disable_notification_option)\">";
+	modal_notification += "{{ 'Disable Alerts' | translate }}";
+	modal_notification += "</ion-toggle>";
+	modal_notification += "<div class=\"item\">";
+	modal_notification += "<button class=\"button button-full button-dark\" ng-click=\"closeNotificationDialog()\">{{ 'Close' | translate }}</button>";
+	modal_notification += "</div>";
+	modal_notification += "</div>";
+	modal_notification += "</ion-content>";
+	modal_notification += "</ion-modal-view>";
+	
+	$rootScope.notificationDialog = $ionicModal.fromTemplate(modal_notification,{
+		scope: $scope,
+		animation: "slide-in-up"
+	});
+	
+	$rootScope.showNotificationDialog = function(){
+		get_notification();
+		$rootScope.notificationDialog.show();
+	};
+	
+	$rootScope.closeNotificationDialog = function(){
+		$rootScope.notificationDialog.hide();
+		$rootScope.closeMenuPopover();
+	};
+	
+	var get_notification =  function(){
+		localforage.getItem("disable_notification_option", function(err, value){
+			var notification_value = false ;
+			if(value === null){
+				notification_value = false ;
+			}
+			if(value === true){
+				notification_value = true ;
+			}else{
+				notification_value = false ;
+			}
+			localforage.setItem("disable_notification_option",notification_value);
+			$rootScope.disable_notification_option = notification_value ;
+		}).then(function(value){
+			var notification_value = false ;
+			if(value === null){
+				notification_value = false ;
+			}
+			if(value === true){
+				notification_value = true ;
+			}else{
+				notification_value = false ;
+			}
+			localforage.setItem("disable_notification_option",notification_value);
+			$rootScope.disable_notification_option = notification_value ;
+		}).catch(function (err){
+			localforage.setItem("disable_notification_option",false);
+			$rootScope.disable_notification_option = false ;
+		})
+	
+	}
+	
+	get_notification();
+	
+	
+	$rootScope.tryChangeNotification = function(val){
+		$rootScope.changeNotification(val);
+	};
+	
+	
+	$rootScope.changeNotification = function(val){
+		$rootScope.disable_notification_option = val;
+		localforage.setItem("disable_notification_option",val);
+	};
+	
+	
+	$scope.$watch("disable_notification_option", function (newValue, oldValue, scope) {
+		if(window.plugins && window.plugins.OneSignal){
+			if(newValue == true){
+				window.plugins.OneSignal.setSubscription(false);
+			}else{
+				window.plugins.OneSignal.setSubscription(true);
+			}
+		}
+	});
 	
 	// TODO: indexCtrl --|-- $rootScope.clearCacheApp
 	$rootScope.clearCacheApp = function(){

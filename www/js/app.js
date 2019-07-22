@@ -20,13 +20,12 @@ angular.module("barisan_pencinta_pancasila", ["ngCordova","ionic","ionMdInput","
 
 		$rootScope.hide_menu_dashboard = false ;
 		$rootScope.hide_menu_home = false ;
+		$rootScope.hide_menu_visi_misi = false ;
 		$rootScope.hide_menu_categories = false ;
 		$rootScope.hide_menu_posts = false ;
 		$rootScope.hide_menu_post_bookmark = false ;
 		$rootScope.hide_menu_help = false ;
 		$rootScope.hide_menu_rate_this_app = false ;
-		$rootScope.hide_menu_faqs = false ;
-		$rootScope.hide_menu_about_us = false ;
 
 
 		$ionicPlatform.ready(function() {
@@ -253,6 +252,7 @@ angular.module("barisan_pencinta_pancasila", ["ngCordova","ionic","ionMdInput","
 
 	.state("barisan_pencinta_pancasila.about_us", {
 		url: "/about_us",
+		cache:false,
 		views: {
 			"barisan_pencinta_pancasila-side_menus" : {
 						templateUrl:"templates/barisan_pencinta_pancasila-about_us.html",
@@ -429,6 +429,20 @@ angular.module("barisan_pencinta_pancasila", ["ngCordova","ionic","ionMdInput","
 			"barisan_pencinta_pancasila-side_menus" : {
 						templateUrl:"templates/barisan_pencinta_pancasila-users.html",
 						controller: "usersCtrl"
+					},
+			"fabButtonUp" : {
+						template: '',
+					},
+		}
+	})
+
+	.state("barisan_pencinta_pancasila.visi_misi", {
+		url: "/visi_misi",
+		cache:false,
+		views: {
+			"barisan_pencinta_pancasila-side_menus" : {
+						templateUrl:"templates/barisan_pencinta_pancasila-visi_misi.html",
+						controller: "visi_misiCtrl"
 					},
 			"fabButtonUp" : {
 						template: '',

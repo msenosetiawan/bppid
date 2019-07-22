@@ -472,20 +472,14 @@ angular.module("barisan_pencinta_pancasila.controllers", [])
 	popover_template += "			<a  class=\"item dark-ink\" ng-click=\"showFontSizeDialog()\" >";
 	popover_template += "			{{ 'Ukuran Tulisan' | translate }}";
 	popover_template += "			</a>";
-	popover_template += "			<a  class=\"item dark-ink\" ng-click=\"openWebView('https://barisanpencintapancasila.org/wp-admin/')\">";
-	popover_template += "			{{ 'Administrator' | translate }}";
-	popover_template += "			</a>";
-	popover_template += "			<a  class=\"item dark-ink\" ng-href=\"#/barisan_pencinta_pancasila/faqs\" ng-click=\"popover.hide()\">";
-	popover_template += "			{{ 'Tanya Jawab' | translate }}";
-	popover_template += "			</a>";
 	popover_template += "			<a  class=\"item dark-ink\" ng-href=\"#/barisan_pencinta_pancasila/about_us\" ng-click=\"popover.hide()\">";
-	popover_template += "			{{ 'Tentang Kami' | translate }}";
+	popover_template += "			{{ 'Tentang Apps' | translate }}";
 	popover_template += "			</a>";
 	popover_template += "			<a  class=\"item dark-ink\" ng-click=\"clearCacheApp()\" >";
 	popover_template += "			{{ 'Bersihkan Cache' | translate }}";
 	popover_template += "			</a>";
 	popover_template += "			<a  class=\"item dark-ink\" ng-click=\"exitApp()\">";
-	popover_template += "			{{ 'Exit' | translate }}";
+	popover_template += "			{{ 'Keluar' | translate }}";
 	popover_template += "			</a>";
 	popover_template += "		</ion-list>";
 	popover_template += "	</ion-content>";
@@ -2780,6 +2774,77 @@ $scope.logOut = function(){
 $ionicConfig.backButton.text("");			
 		} catch(e){
 			console.log("%cerror: %cPage: `users` and field: `Custom Controller`","color:blue;font-size:18px","color:red;font-size:18px");
+			console.dir(e);
+		}
+	}
+	$scope.rating = {};
+	$scope.rating.max = 5;
+	
+	// animation ink (ionic-material)
+	ionicMaterialInk.displayEffect();
+	controller_by_user();
+})
+
+// TODO: visi_misiCtrl --|-- 
+.controller("visi_misiCtrl", function($ionicConfig,$scope,$rootScope,$state,$location,$ionicScrollDelegate,$ionicListDelegate,$http,$httpParamSerializer,$stateParams,$timeout,$interval,$ionicLoading,$ionicPopup,$ionicPopover,$ionicActionSheet,$ionicSlideBoxDelegate,$ionicHistory,ionicMaterialInk,ionicMaterialMotion,$window,$ionicModal,base64,md5,$document,$sce,$ionicGesture,$translate,tmhDynamicLocale){
+	
+	$rootScope.headerExists = true;
+	$rootScope.ionWidth = $document[0].body.querySelector(".view-container").offsetWidth || 412;
+	$rootScope.grid64 = parseInt($rootScope.ionWidth / 64) ;
+	$rootScope.grid80 = parseInt($rootScope.ionWidth / 80) ;
+	$rootScope.grid128 = parseInt($rootScope.ionWidth / 128) ;
+	$rootScope.grid256 = parseInt($rootScope.ionWidth / 256) ;
+	$rootScope.last_edit = "page" ;
+	$scope.$on("$ionicView.afterEnter", function (){
+		var page_id = $state.current.name ;
+		$rootScope.page_id = page_id.replace(".","-") ;
+	});
+	if($rootScope.headerShrink == true){
+		$scope.$on("$ionicView.enter", function(){
+			$scope.scrollTop();
+		});
+	};
+	// TODO: visi_misiCtrl --|-- $scope.scrollTop
+	$rootScope.scrollTop = function(){
+		$timeout(function(){
+			$ionicScrollDelegate.$getByHandle("top").scrollTop();
+		},100);
+	};
+	// TODO: visi_misiCtrl --|-- $scope.toggleGroup
+	$scope.toggleGroup = function(group) {
+		if ($scope.isGroupShown(group)) {
+			$scope.shownGroup = null;
+		} else {
+			$scope.shownGroup = group;
+		}
+	};
+	
+	$scope.isGroupShown = function(group) {
+		return $scope.shownGroup === group;
+	};
+	
+	// TODO: visi_misiCtrl --|-- $scope.redirect
+	// redirect
+	$scope.redirect = function($url){
+		$window.location.href = $url;
+	};
+	
+	// Set Motion
+	$timeout(function(){
+		ionicMaterialMotion.slideUp({
+			selector: ".slide-up"
+		});
+	}, 300);
+	// code 
+
+	// TODO: visi_misiCtrl --|-- controller_by_user
+	// controller by user 
+	function controller_by_user(){
+		try {
+			
+			
+		} catch(e){
+			console.log("%cerror: %cPage: `visi_misi` and field: `Custom Controller`","color:blue;font-size:18px","color:red;font-size:18px");
 			console.dir(e);
 		}
 	}

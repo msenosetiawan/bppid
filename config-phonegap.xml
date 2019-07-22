@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.imabuilder.barisanpencintapancasila.barisanpencintapancasila" version="1.0.190719" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.imabuilder.barisanpencintapancasila.barisanpencintapancasila" version="1.0.190722" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
 	<name>Barisan Pencinta Pancasila</name>
 	<description>Aplikasi Resmi Barisan Pencinta Pancasila</description>
 	<author email="halo@barisanpencintapancasila.id" href="https://barisanpencintapancasila.id">IT Barisan Pencinta Pancasila</author>

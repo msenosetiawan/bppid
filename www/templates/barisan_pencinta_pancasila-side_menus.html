@@ -25,6 +25,9 @@
 				<ion-item ng-hide="hide_menu_home"  sound-touch="true"  class="menu-home item-sidebar item item-icon-left text-left dark-ink" nav-clear="" menu-close=""  ui-sref="barisan_pencinta_pancasila.dashboard" >
 					<i class="icon ion-android-home"></i> {{ "Beranda" | translate }}
 				</ion-item>
+				<ion-item ng-hide="hide_menu_visi_misi"  sound-touch="true"  class="menu-visi_misi item-sidebar item item-icon-left text-left dark-ink" nav-clear="" menu-close="" ui-sref="barisan_pencinta_pancasila.visi_misi">
+					<i class="icon ion-quote"></i> {{ "Visi Misi" | translate }}
+				</ion-item>
 				<ion-item ng-hide="hide_menu_categories"  sound-touch="true"  class="menu-categories item-sidebar item item-icon-left text-left dark-ink" nav-clear="" menu-close="" ui-sref="barisan_pencinta_pancasila.categories">
 					<i class="icon ion-social-buffer"></i> {{ "Kategori" | translate }}
 				</ion-item>
@@ -39,12 +42,6 @@
 				</ion-item>
 				<ion-item ng-hide="hide_menu_rate_this_app"  sound-touch="true"  class="menu-rate_this_app item-sidebar item item-icon-left text-left dark-ink" nav-clear="" menu-close="" ng-click="openURL('market://details?id=com.imabuilder.barisanpencintapancasila.barisanpencintapancasila')">
 					<i class="icon ion-android-playstore"></i> {{ "Beri rating" | translate }}
-				</ion-item>
-				<ion-item ng-hide="hide_menu_faqs"  sound-touch="true"  class="menu-faqs item-sidebar item item-icon-left text-left dark-ink" nav-clear="" menu-close="" ui-sref="barisan_pencinta_pancasila.faqs">
-					<i class="icon ion-ios-help"></i> {{ "Tanya Jawab" | translate }}
-				</ion-item>
-				<ion-item ng-hide="hide_menu_about_us"  sound-touch="true"  class="menu-about_us item-sidebar item item-icon-left text-left dark-ink" nav-clear="" menu-close="" ui-sref="barisan_pencinta_pancasila.about_us">
-					<i class="icon ion-help-buoy"></i> {{ "Tentang Kami" | translate }}
 				</ion-item>
 			</ion-list>
 		</ion-content>

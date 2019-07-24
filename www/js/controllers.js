@@ -472,14 +472,8 @@ angular.module("barisan_pencinta_pancasila.controllers", [])
 	popover_template += "			<a  class=\"item dark-ink\" ng-click=\"showFontSizeDialog()\" >";
 	popover_template += "			{{ 'Ukuran Tulisan' | translate }}";
 	popover_template += "			</a>";
-	popover_template += "			<a  class=\"item dark-ink\" ng-click=\"openWebView('https://app.barisanpencintapancasila.id/wp-admin/')\">";
-	popover_template += "			{{ 'Administrator' | translate }}";
-	popover_template += "			</a>";
-	popover_template += "			<a  class=\"item dark-ink\" ng-href=\"#/barisan_pencinta_pancasila/faqs\" ng-click=\"popover.hide()\">";
-	popover_template += "			{{ 'Tanya Jawab' | translate }}";
-	popover_template += "			</a>";
 	popover_template += "			<a  class=\"item dark-ink\" ng-href=\"#/barisan_pencinta_pancasila/about_us\" ng-click=\"popover.hide()\">";
-	popover_template += "			{{ 'Tentang Kami' | translate }}";
+	popover_template += "			{{ 'Tentang Apps' | translate }}";
 	popover_template += "			</a>";
 	popover_template += "			<a  class=\"item dark-ink\" ng-click=\"clearCacheApp()\" >";
 	popover_template += "			{{ 'Bersihkan Cache' | translate }}";

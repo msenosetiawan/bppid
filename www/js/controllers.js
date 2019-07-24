@@ -472,14 +472,20 @@ angular.module("barisan_pencinta_pancasila.controllers", [])
 	popover_template += "			<a  class=\"item dark-ink\" ng-click=\"showFontSizeDialog()\" >";
 	popover_template += "			{{ 'Ukuran Tulisan' | translate }}";
 	popover_template += "			</a>";
+	popover_template += "			<a  class=\"item dark-ink\" ng-click=\"openWebView('https://app.barisanpencintapancasila.id/wp-admin/')\">";
+	popover_template += "			{{ 'Administrator' | translate }}";
+	popover_template += "			</a>";
+	popover_template += "			<a  class=\"item dark-ink\" ng-href=\"#/barisan_pencinta_pancasila/faqs\" ng-click=\"popover.hide()\">";
+	popover_template += "			{{ 'Tanya Jawab' | translate }}";
+	popover_template += "			</a>";
 	popover_template += "			<a  class=\"item dark-ink\" ng-href=\"#/barisan_pencinta_pancasila/about_us\" ng-click=\"popover.hide()\">";
-	popover_template += "			{{ 'Tentang Apps' | translate }}";
+	popover_template += "			{{ 'Tentang Kami' | translate }}";
 	popover_template += "			</a>";
 	popover_template += "			<a  class=\"item dark-ink\" ng-click=\"clearCacheApp()\" >";
 	popover_template += "			{{ 'Bersihkan Cache' | translate }}";
 	popover_template += "			</a>";
 	popover_template += "			<a  class=\"item dark-ink\" ng-click=\"exitApp()\">";
-	popover_template += "			{{ 'Keluar' | translate }}";
+	popover_template += "			{{ 'Exit' | translate }}";
 	popover_template += "			</a>";
 	popover_template += "		</ion-list>";
 	popover_template += "	</ion-content>";
@@ -781,9 +787,9 @@ $ionicConfig.backButton.text("");
 	
 	
 	// TODO: categoriesCtrl --|-- $scope.fetchURL
-	$scope.fetchURL = "https://barisanpencintapancasila.org/wp-json/wp/v2/categories?per_page=100";
+	$scope.fetchURL = "https://app.barisanpencintapancasila.id/wp-json/wp/v2/categories?per_page=100";
 	// TODO: categoriesCtrl --|-- $scope.fetchURLp
-	$scope.fetchURLp = "https://barisanpencintapancasila.org/wp-json/wp/v2/categories?per_page=100&callback=JSON_CALLBACK";
+	$scope.fetchURLp = "https://app.barisanpencintapancasila.id/wp-json/wp/v2/categories?per_page=100&callback=JSON_CALLBACK";
 	// TODO: categoriesCtrl --|-- $scope.hashURL
 	$scope.hashURL = md5.createHash( $scope.fetchURL.replace(targetQuery,raplaceWithQuery));
 	
@@ -1422,9 +1428,9 @@ $ionicConfig.backButton.text("");
 	// Retrieving data
 	var itemID = $stateParams.id;
 	// TODO: post_singlesCtrl --|-- $scope.fetchURL
-	$scope.fetchURL = "https://barisanpencintapancasila.org/wp-json/wp/v2/posts/" + itemID;
+	$scope.fetchURL = "https://app.barisanpencintapancasila.id/wp-json/wp/v2/posts/" + itemID;
 	// TODO: post_singlesCtrl --|-- $scope.fetchURLp
-	$scope.fetchURLp = "https://barisanpencintapancasila.org/wp-json/wp/v2/posts/" + itemID + "?callback=JSON_CALLBACK";
+	$scope.fetchURLp = "https://app.barisanpencintapancasila.id/wp-json/wp/v2/posts/" + itemID + "?callback=JSON_CALLBACK";
 	// TODO: post_singlesCtrl --|-- $scope.hashURL
 	$scope.hashURL = md5.createHash($scope.fetchURL);
 	
@@ -1726,9 +1732,9 @@ $ionicConfig.backButton.text("");
 	
 	
 	// TODO: postsCtrl --|-- $scope.fetchURL
-	$scope.fetchURL = "https://barisanpencintapancasila.org/wp-json/wp/v2/posts/?categories=-1&per_page=15&page=1";
+	$scope.fetchURL = "https://app.barisanpencintapancasila.id/wp-json/wp/v2/posts/?categories=-1&per_page=15&page=1";
 	// TODO: postsCtrl --|-- $scope.fetchURLp
-	$scope.fetchURLp = "https://barisanpencintapancasila.org/wp-json/wp/v2/posts/?categories=-1&per_page=15&page=1&callback=JSON_CALLBACK";
+	$scope.fetchURLp = "https://app.barisanpencintapancasila.id/wp-json/wp/v2/posts/?categories=-1&per_page=15&page=1&callback=JSON_CALLBACK";
 	// TODO: postsCtrl --|-- $scope.hashURL
 	$scope.hashURL = md5.createHash( $scope.fetchURL.replace(targetQuery,raplaceWithQuery));
 	
@@ -1947,7 +1953,7 @@ $ionicConfig.backButton.text("");
 
 $ionicConfig.backButton.text("");
 
-var UriListing = "https://barisanpencintapancasila.org/wp-json/wp/v2/posts?categories=-1&per_page=15";    
+var UriListing = "https://app.barisanpencintapancasila.id/wp-json/wp/v2/posts?categories=-1&per_page=15";    
 if(!$scope.paging){$scope.paging=1;}
 $scope.updatePaging=function(ev){
     if(ev === true){
@@ -2112,6 +2118,8 @@ $ionicConfig.backButton.text("");
 	function controller_by_user(){
 		try {
 			
+
+
 /** auth login **/
 $scope.login_data = {username:"",password:""};
 $scope.submitLogin = function(){
@@ -2125,7 +2133,7 @@ $scope.submitLogin = function(){
     var password = $scope.login_data.password || "1234" ;
  
     
-    var auth_cookie_url = "https://barisanpencintapancasila.org/api/user/generate_auth_cookie/?insecure=cool&username="+username+"&password="+password+"&callback=JSON_CALLBACK";
+    var auth_cookie_url = "https://app.barisanpencintapancasila.id/api/user/generate_auth_cookie/?insecure=cool&username="+username+"&password="+password+"&callback=JSON_CALLBACK";
     $sce.trustAsResourceUrl(auth_cookie_url);
     
     $http.jsonp(auth_cookie_url).success(function(resp_auth_cookie, status, headers, config){
@@ -2369,7 +2377,7 @@ $scope.logOut = function(){
             		template: '<div class="loader"><svg class="circular"><circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/></svg></div>'
             	});   
                                  
-                var nonce_url = "https://barisanpencintapancasila.org/api/get_nonce/?controller=user&method=register&callback=JSON_CALLBACK";
+                var nonce_url = "https://app.barisanpencintapancasila.id/api/get_nonce/?controller=user&method=register&callback=JSON_CALLBACK";
                 $sce.trustAsResourceUrl(nonce_url);
                 
                 $http.jsonp(nonce_url).success(function(resp_nonce, status, headers, config){
@@ -2379,7 +2387,7 @@ $scope.logOut = function(){
                     http_params.nonce = resp_nonce.nonce;
                     var http_header = {params: http_params};
                                         
-                    var register_url = "https://barisanpencintapancasila.org/api/user/register/?insecure=cool&callback=JSON_CALLBACK";
+                    var register_url = "https://app.barisanpencintapancasila.id/api/user/register/?insecure=cool&callback=JSON_CALLBACK";
                     $sce.trustAsResourceUrl(register_url);
                     $http.jsonp(register_url,http_header).success(function(resp_register, status, headers, config){
                             console.log("resp_register",resp_register);
@@ -2553,9 +2561,9 @@ $scope.logOut = function(){
 	
 	
 	// TODO: usersCtrl --|-- $scope.fetchURL
-	$scope.fetchURL = "https://barisanpencintapancasila.org/wp-json/wp/v2/users/";
+	$scope.fetchURL = "https://app.barisanpencintapancasila.id/wp-json/wp/v2/users/";
 	// TODO: usersCtrl --|-- $scope.fetchURLp
-	$scope.fetchURLp = "https://barisanpencintapancasila.org/wp-json/wp/v2/users/?callback=JSON_CALLBACK";
+	$scope.fetchURLp = "https://app.barisanpencintapancasila.id/wp-json/wp/v2/users/?callback=JSON_CALLBACK";
 	// TODO: usersCtrl --|-- $scope.hashURL
 	$scope.hashURL = md5.createHash( $scope.fetchURL.replace(targetQuery,raplaceWithQuery));
 	

@@ -19,8 +19,7 @@ angular.module("barisan_pencinta_pancasila", ["ngCordova","ionic","ionMdInput","
 
 
 		$rootScope.hide_menu_dashboard = false ;
-		$rootScope.hide_menu_home = false ;
-		$rootScope.hide_menu_visi_misi = false ;
+		$rootScope.hide_menu_beranda = false ;
 		$rootScope.hide_menu_categories = false ;
 		$rootScope.hide_menu_posts = false ;
 		$rootScope.hide_menu_post_bookmark = false ;
@@ -384,7 +383,6 @@ angular.module("barisan_pencinta_pancasila", ["ngCordova","ionic","ionMdInput","
 
 	.state("barisan_pencinta_pancasila.user_login", {
 		url: "/user_login",
-		cache:true,
 		views: {
 			"barisan_pencinta_pancasila-side_menus" : {
 						templateUrl:"templates/barisan_pencinta_pancasila-user_login.html",

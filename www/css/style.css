@@ -239,13 +239,13 @@ ul.rating li i{color:#FFCC00}
 .menu .bar.bar-header.expanded img{margin:auto;left:16px;right:16px;}
 
 /** option page **/
-#page-about_us{background: url("../data/images/background/bg8.jpg") no-repeat left top fixed;background-size: cover;width:100%;height:100%;background-repeat:no-repeat;}
+#page-about_us{background: url("../data/images/background/bg7.jpg") no-repeat left top fixed;background-size: cover;width:100%;height:100%;background-repeat:no-repeat;}
 #page-categories{background: url("../data/images/background/bg7.jpg") no-repeat left top fixed;background-size: cover;width:100%;height:100%;background-repeat:no-repeat;}
 #page-dashboard{background: url("../data/images/background/bg7.jpg") no-repeat left top fixed;background-size: cover;width:100%;height:100%;background-repeat:no-repeat;}
 #page-faqs{background: url("../data/images/background/bg7.jpg") no-repeat left top fixed;background-size: cover;width:100%;height:100%;background-repeat:no-repeat;}
 #page-post_bookmark{background: url("../data/images/background/transparent.png") no-repeat left top fixed;background-size: cover;width:100%;height:100%;background-repeat:no-repeat;}
 #page-posts{background: url("../data/images/background/bg7.jpg") no-repeat left top fixed;background-size: cover;width:100%;height:100%;background-repeat:no-repeat;}
-#page-user_login{background: url("../data/images/background/Flag-of-Indonesia-the-corner-on-white-background.-Isolated-contains-clipping-path-1200x800.jpg") no-repeat left top fixed;background-size: cover;width:100%;height:100%;background-repeat:no-repeat;}
+#page-user_login{background: url("../data/images/background/bg3.jpg") no-repeat left top fixed;background-size: cover;width:100%;height:100%;background-repeat:no-repeat;}
 #page-user_register{background: url("../data/images/background/bg3.jpg") no-repeat left top fixed;background-size: cover;width:100%;height:100%;background-repeat:no-repeat;}
 #page-users{background: url("../data/images/background/bg7.jpg") no-repeat left top fixed;background-size: cover;width:100%;height:100%;background-repeat:no-repeat;}
 /** page about_us **/
@@ -262,6 +262,7 @@ ul.rating li i{color:#FFCC00}
 /** page slide_tab_menu **/
 
 /** page user_login **/
+
 .hero > .content h2{color: #fff;text-shadow: 0 1px 0px #000;}
 .social-login { position: fixed; bottom: 0;}
 .app-icon {background-color: #fff;background-size:cover !important; border-radius: 50%;height:80px;margin: 0 auto;width:80px;}
